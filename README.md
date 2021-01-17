@@ -5,7 +5,7 @@
 
 Ha Windows-on keresztül megfelelően telepítve van a játék, akkor automatikusan megpróbálja megkeresni magának a szükséges `resident.ark` fájlt tallózás nélkül, de a magyarítás telepítése előtt van lehetőség tetszőleges fájlt és ideiglenes mappát megadni (ha pl. nincs a kibontáshoz elég szabad hely a `C:` meghajtódon).
 
-Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huLangFile.txt](res/huLangFile.txt) útvonalon. Ebben a fájlban ez ékezetes Ő és Ű betűk közvetlen szerepelnek, de mivel a játék 2 betűtípúsából csak az egyik támogajta ezen karakterek kis- és nagybetűs verzióit ezért a telepítő a folyamat során ezeket Õ és Ũ betűkre cseréli.
+Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huLangFile.txt](res/huLangFile.txt) útvonalon. Ebben a fájlban ez ékezetes Ő és Ű betűk közvetlen szerepelnek, de mivel a játék 2 betűtípúsából csak az egyik támogajta ezen karakterek kis- és nagybetűs verzióit ezért a telepítő a folyamat során ezeket Õ és Û betűkre cseréli.
 
 ## Használati útmutató
 
