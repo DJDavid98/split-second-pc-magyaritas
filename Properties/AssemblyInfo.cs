@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SplitSecondMagyaritas")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SplitSecond Magyarítas")]
+[assembly: AssemblyDescription("Magyar nyelvi fájl és telepítő a Split/Second játékhoz")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SplitSecondMagyaritas")]
-[assembly: AssemblyCopyright("Copyright ©  2021")]
+[assembly: AssemblyProduct("")]
+[assembly: AssemblyCopyright("WTFPL")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

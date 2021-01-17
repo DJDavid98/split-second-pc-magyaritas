@@ -244,7 +244,7 @@ namespace SplitSecondMagyaritas {
 				string huText = SplitSecondMagyaritas.Properties.Resources.huLangFile;
 
 				queueOutputLine($"Játék által nem támogatott karakterek cseréje...");
-				huText = huText.Replace('ő', 'õ').Replace('Ő', 'Õ').Replace('ű', 'ũ').Replace('Ű', 'Ũ');
+				huText = huText.Replace('ő', 'õ').Replace('Ő', 'Õ').Replace('ű', 'û').Replace('Ű', 'Û');
 
 				queueOutputLine($"Végleges szöveg fájlba írása...");
 				File.WriteAllText(enLangFilePath, huText, Encoding.UTF8);
