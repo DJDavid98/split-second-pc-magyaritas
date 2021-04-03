@@ -14,11 +14,12 @@ Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huL
  3. [7-Zip] segítségével csomagold ki az előbb letöltött állományból a `Split_Second_ARK_Tool.exe`-t **közvetlen a `SplitSecondMagyaritas.exe` fájl mellé**
  4. Indítsd el a telepítőt és kövesd a képernyőn megjelenő utasításokat
  
-    - Ha a Windows SmartScreen nyavajog, hogy ismeretlen kiadótól származik a program, az ablakban a "További információ" linkre kattintva megjelenik egy gomb amivel már tudod futtatni.
+    - Ha a Windows SmartScreen nyavajog, hogy ismeretlen kiadótól származik a program, az ablakban a “További információ” linkre kattintva megjelenik egy gomb amivel már tudod futtatni.
  
 ## Nem működik / hibát találtam
 
-Bármilyen észrevétellel a weboldalamon található eléhetőségeim egyikén kereshetsz: https://djdavid98.art
+Bármilyen észrevétellel a [weboldalamon] található eléhetőségeim egyikén kereshetsz.
 
  [SplitSecondMagyaritas.exe]: https://bitbucket.org/DJDavid98/split-second-magyaritas/downloads/SplitSecondMagyaritas.exe
  [7-Zip]: https://www.7-zip.org/
+ [weboldalamon]: https://djdavid98.art

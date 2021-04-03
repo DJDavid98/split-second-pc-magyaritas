@@ -291,78 +291,6 @@
   <data name="&gt;&gt;arkGroup.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;checkIconTempSpace.Name" xml:space="preserve">
-    <value>checkIconTempSpace</value>
-  </data>
-  <data name="&gt;&gt;checkIconTempSpace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkIconTempSpace.Parent" xml:space="preserve">
-    <value>checksGroup</value>
-  </data>
-  <data name="&gt;&gt;checkIconTempSpace.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkIconExtractor.Name" xml:space="preserve">
-    <value>checkIconExtractor</value>
-  </data>
-  <data name="&gt;&gt;checkIconExtractor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkIconExtractor.Parent" xml:space="preserve">
-    <value>checksGroup</value>
-  </data>
-  <data name="&gt;&gt;checkIconExtractor.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkLabelTempSpace.Name" xml:space="preserve">
-    <value>checkLabelTempSpace</value>
-  </data>
-  <data name="&gt;&gt;checkLabelTempSpace.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkLabelTempSpace.Parent" xml:space="preserve">
-    <value>checksGroup</value>
-  </data>
-  <data name="&gt;&gt;checkLabelTempSpace.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkLabelExtractor.Name" xml:space="preserve">
-    <value>checkLabelExtractor</value>
-  </data>
-  <data name="&gt;&gt;checkLabelExtractor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkLabelExtractor.Parent" xml:space="preserve">
-    <value>checksGroup</value>
-  </data>
-  <data name="&gt;&gt;checkLabelExtractor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="checksGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>318, 78</value>
-  </data>
-  <data name="checksGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 133</value>
-  </data>
-  <data name="checksGroup.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checksGroup.Text" xml:space="preserve">
-    <value>Előfeltételek</value>
-  </data>
-  <data name="&gt;&gt;checksGroup.Name" xml:space="preserve">
-    <value>checksGroup</value>
-  </data>
-  <data name="&gt;&gt;checksGroup.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checksGroup.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checksGroup.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="checkIconTempSpace.ErrorImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
@@ -483,80 +411,29 @@
   <data name="&gt;&gt;checkLabelExtractor.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;diskFreeOutput.Name" xml:space="preserve">
-    <value>diskFreeOutput</value>
+  <data name="checksGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>318, 78</value>
   </data>
-  <data name="&gt;&gt;diskFreeOutput.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checksGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 133</value>
   </data>
-  <data name="&gt;&gt;diskFreeOutput.Parent" xml:space="preserve">
-    <value>extractGroup</value>
-  </data>
-  <data name="&gt;&gt;diskFreeOutput.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;extractBrowseButton.Name" xml:space="preserve">
-    <value>extractBrowseButton</value>
-  </data>
-  <data name="&gt;&gt;extractBrowseButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;extractBrowseButton.Parent" xml:space="preserve">
-    <value>extractGroup</value>
-  </data>
-  <data name="&gt;&gt;extractBrowseButton.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;diskFreeLabel.Name" xml:space="preserve">
-    <value>diskFreeLabel</value>
-  </data>
-  <data name="&gt;&gt;diskFreeLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;diskFreeLabel.Parent" xml:space="preserve">
-    <value>extractGroup</value>
-  </data>
-  <data name="&gt;&gt;diskFreeLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;extractFolderPath.Name" xml:space="preserve">
-    <value>extractFolderPath</value>
-  </data>
-  <data name="&gt;&gt;extractFolderPath.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;extractFolderPath.Parent" xml:space="preserve">
-    <value>extractGroup</value>
-  </data>
-  <data name="&gt;&gt;extractFolderPath.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="extractGroup.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="extractGroup.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 160</value>
-  </data>
-  <data name="extractGroup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 88</value>
-  </data>
-  <data name="extractGroup.TabIndex" type="System.Int32, mscorlib">
+  <data name="checksGroup.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="extractGroup.Text" xml:space="preserve">
-    <value>2. Adj meg egy ideiglenes mappát, ahova a fájl tartalmát kibontsam</value>
+  <data name="checksGroup.Text" xml:space="preserve">
+    <value>Előfeltételek</value>
   </data>
-  <data name="&gt;&gt;extractGroup.Name" xml:space="preserve">
-    <value>extractGroup</value>
+  <data name="&gt;&gt;checksGroup.Name" xml:space="preserve">
+    <value>checksGroup</value>
   </data>
-  <data name="&gt;&gt;extractGroup.Type" xml:space="preserve">
+  <data name="&gt;&gt;checksGroup.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;extractGroup.Parent" xml:space="preserve">
+  <data name="&gt;&gt;checksGroup.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;extractGroup.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checksGroup.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="diskFreeOutput.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
@@ -680,6 +557,33 @@
   </data>
   <data name="&gt;&gt;extractFolderPath.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="extractGroup.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="extractGroup.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 160</value>
+  </data>
+  <data name="extractGroup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 88</value>
+  </data>
+  <data name="extractGroup.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="extractGroup.Text" xml:space="preserve">
+    <value>2. Adj meg egy ideiglenes mappát, ahova a fájl tartalmát kibontsam</value>
+  </data>
+  <data name="&gt;&gt;extractGroup.Name" xml:space="preserve">
+    <value>extractGroup</value>
+  </data>
+  <data name="&gt;&gt;extractGroup.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;extractGroup.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;extractGroup.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="tempFolderDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>139, 17</value>
@@ -2216,7 +2120,7 @@
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Split/Second Magyarítás</value>
+    <value>Split/Second Magyarítás Telepítő</value>
   </data>
   <data name="&gt;&gt;arkFileDialog.Name" xml:space="preserve">
     <value>arkFileDialog</value>

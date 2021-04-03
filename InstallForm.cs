@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Timers;
 using System.Linq;
 
 namespace SplitSecondMagyaritas {
