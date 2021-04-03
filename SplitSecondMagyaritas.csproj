@@ -120,6 +120,9 @@
   <ItemGroup>
     <EmbeddedResource Include="res\checkmark.png" />
     <EmbeddedResource Include="res\huLangFile.txt" />
+    <Content Include="Telepítési útmutató.rtf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Split_Second_ARK_Tool.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
