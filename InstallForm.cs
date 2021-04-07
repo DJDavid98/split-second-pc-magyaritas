@@ -295,12 +295,6 @@ namespace SplitSecondMagyaritas {
 					queueOutputLine($"Fájl ellenőrzése: {datFileName} - Lehetséges találat, első 3 karakter: {first3Chars}");
 
 					var fileContents = File.ReadAllBytes(datFileName);
-					if (datFileName.EndsWith("1899.dat")) {
-						File.WriteAllBytes(@"D:\Desktop\1899e.gfx", fileContents);
-					}
-					else if (datFileName.EndsWith("3232.dat")) {
-						File.WriteAllBytes(@"D:\Desktop\3232e.gfx", fileContents);
-					}
 					var fontFileFound = false;
 					if (!file1Found && sequenceContains(fileContents, fontFile1ContainsBytes)) {
 						File.WriteAllBytes(datFileName, Properties.Resources.fonts1);
