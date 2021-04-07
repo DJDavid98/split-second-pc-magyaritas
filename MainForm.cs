@@ -62,7 +62,7 @@ namespace SplitSecondMagyaritas {
 
 		private Image getCheckLabelIcon(bool success) {
 			if (success) {
-				return SplitSecondMagyaritas.Properties.Resources.checkmark;
+				return Properties.Resources.checkmark;
 			}
 
 			return SystemIcons.Error.ToBitmap();

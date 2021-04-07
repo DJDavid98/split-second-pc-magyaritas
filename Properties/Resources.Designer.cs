@@ -71,6 +71,26 @@ namespace SplitSecondMagyaritas.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] fonts1 {
+            get {
+                object obj = ResourceManager.GetObject("fonts1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] fonts2 {
+            get {
+                object obj = ResourceManager.GetObject("fonts2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ZENE HANGEREJE
         ///VÁLTOZTASD MEG A KÉPMINŐSÉGET A GRAFIKUS KÁRTYÁD TELJESÍTMÉNYÉHEZ VISZONYÍTVA
         ///11 ESEMÉNY TELJESÍTVE

@@ -14,6 +14,8 @@ namespace SplitSecondMagyaritas {
 	public partial class InstallForm : Form {
 		private const string tempFolderName = "SplitSecondMagyaritas";
 		private const string enFileStartsWith = "ADJUST MUSIC VOLUME";
+		private const string fontFile1Contains = "These are the symbolic font names we have defined for the game.";
+		private const string fontFile2Contains = "$HudFontA - EN";
 		private string arkPathUserSelection;
 		private string tempPathUserSelection;
 		private string extractorPathIn;
@@ -66,6 +68,7 @@ namespace SplitSecondMagyaritas {
 				exportArkFile,
 				findEnglishLanguageFile,
 				overwriteWithHungarianLanguageFile,
+				swapFonts,
 				importArkFile,
 				renameNewArkFile,
 			});
@@ -157,7 +160,7 @@ namespace SplitSecondMagyaritas {
 
 			bool success = false;
 			try {
-				File.Move(newArkPath, arkPathUserSelection);
+				File.Move(arkBackupPath, arkPathUserSelection);
 				success = true;
 			} catch (Exception err) {
 				queueOutputLine($"Hiba a fájl mozgatása közben: {err.Message}\n{err.StackTrace}");
@@ -184,7 +187,7 @@ namespace SplitSecondMagyaritas {
 				extractProcess.WaitForExit();
 
 				if (extractProcess.ExitCode != 0) {
-					throw new Exception($"A kicomagoló program visszatérési értéke ({extractProcess.ExitCode}) hibát jelöl");
+					throw new Exception($"A kicsomagoló program visszatérési értéke ({extractProcess.ExitCode}) hibát jelöl");
 				}
 
 				success = true;
@@ -213,7 +216,7 @@ namespace SplitSecondMagyaritas {
 				var textFiles = files.FindAll(fileName => fileName.EndsWith(".txt"));
 				foreach (var textFileName in textFiles) {
 					var firstLine = File.ReadLines(textFileName).First();
-					queueOutputLine($"Fájl ellenörzése: {textFileName} - Első sor: {firstLine}");
+					queueOutputLine($"Fájl ellenőrzése: {textFileName} - Első sor: {firstLine}");
 					if (firstLine.StartsWith(enFileStartsWith)) {
 						enLangFilePath = textFileName;
 						success = true;
@@ -240,10 +243,10 @@ namespace SplitSecondMagyaritas {
 			bool success = false;
 			try {
 				queueOutputLine($"Magyar szöveg beolvasása...");
-				string huText = SplitSecondMagyaritas.Properties.Resources.huLangFile;
+				string huText = Properties.Resources.huLangFile;
 
 				queueOutputLine($"Játék által nem támogatott karakterek cseréje...");
-				huText = huText.Replace('ő', 'õ').Replace('Ő', 'Õ').Replace('ű', 'û').Replace('Ű', 'Û');
+				huText = huText.Replace('ő', 'ô').Replace('Ő', 'Ô').Replace('ű', 'û').Replace('Ű', 'Û');
 
 				queueOutputLine($"Végleges szöveg fájlba írása...");
 				File.WriteAllText(enLangFilePath, huText, Encoding.UTF8);
@@ -259,9 +262,89 @@ namespace SplitSecondMagyaritas {
 				queueOutputLine($"Angol nyelvi fájl sikeresen felülírva a magyar szöveggel.");
 			}
 		}
+		private void swapFonts() {
+			queueOutputLine($"Betűtípus fájlok cseréje hosszú ő és ű betűket támogatóra...");
+			int[] foundProgressEquivalent = new int[] { (int)InstallProgress.COPY_HU_TXT, (int)InstallProgress.SWAP_FONT_1, (int)InstallProgress.SWAP_FONT_2 };
+			int targetProgress = (int)InstallProgress.SWAP_FONT_2;
+
+			int found = 0;
+			bool file1Found = false;
+			bool file2Found = false;
+			try {
+				var files = new List<string>(Directory.GetFiles(tempFolder));
+				if (files.Count == 0) {
+					throw new Exception("Az ideiglenes mappa üres");
+				}
+				double totalFileCount = Convert.ToDouble(files.Count);
+				double fileCounter = 0.0;
+
+				var datFiles = files.FindAll(fileName => fileName.EndsWith(".dat"));
+				var fontFile1ContainsBytes = Encoding.ASCII.GetBytes(fontFile1Contains);
+				var fontFile2ContainsBytes = Encoding.ASCII.GetBytes(fontFile2Contains);
+				foreach (var datFileName in datFiles) {
+					if (found == 2) {
+						break;
+					}
+
+					byte[] first3Bytes = new byte[3];
+					var fileHandle = File.OpenRead(datFileName);
+					fileHandle.Read(first3Bytes, 0, 3);
+					fileHandle.Close();
+					var first3Chars = Encoding.ASCII.GetString(first3Bytes);
+					if (first3Chars != "GFX") continue;
+					queueOutputLine($"Fájl ellenőrzése: {datFileName} - Lehetséges találat, első 3 karakter: {first3Chars}");
+
+					var fileContents = File.ReadAllBytes(datFileName);
+					if (datFileName.EndsWith("1899.dat")) {
+						File.WriteAllBytes(@"D:\Desktop\1899e.gfx", fileContents);
+					}
+					else if (datFileName.EndsWith("3232.dat")) {
+						File.WriteAllBytes(@"D:\Desktop\3232e.gfx", fileContents);
+					}
+					var fontFileFound = false;
+					if (!file1Found && sequenceContains(fileContents, fontFile1ContainsBytes)) {
+						File.WriteAllBytes(datFileName, Properties.Resources.fonts1);
+						queueOutputLine($"Fájl {datFileName} felülírva az 1. betűtípus fájllal.");
+						file1Found = true;
+						fontFileFound = true;
+					}
+					else if (!file2Found && sequenceContains(fileContents, fontFile2ContainsBytes)) {
+						File.WriteAllBytes(datFileName, Properties.Resources.fonts2);
+						queueOutputLine($"Fájl {datFileName} felülírva az 2. betűtípus fájllal.");
+						file2Found = true;
+						fontFileFound = true;
+					}
+
+					if (fontFileFound) {
+						found++;
+					}
+
+					string newDatFileName = Regex.Replace(datFileName, @"\.dat$", ".gfx");
+					queueOutputLine($"GFX fájl kiterjesztés alkalmazása: {datFileName}");
+					File.Move(datFileName, newDatFileName);
+					queueOutputLine($"Fájl átnevezve, új név: {newDatFileName}");
+
+					var baseProgress = foundProgressEquivalent[found];
+					installWorker.ReportProgress(Convert.ToInt32(baseProgress + ((targetProgress - baseProgress) * (fileCounter / totalFileCount))));
+					fileCounter++;
+				}
+
+				if (found < 2) {
+					throw new Exception("Nem sikerült megtalálni a várt betűtípusokat.");
+				}
+			} catch (Exception err) {
+				cancelInstall("Hiba a betűtípus fájlok keresése során", err);
+				return;
+			}
+
+			if (found == 2) {
+				installWorker.ReportProgress(foundProgressEquivalent[found]);
+				queueOutputLine("Betűtípus fájlok sikeresen lecserélve.");
+			}
+		}
 		private void importArkFile() {
-			queueOutputLine($"ARK fájl tartalmának visszacsomagolása...");
-			int initialProgress = (int)InstallProgress.COPY_HU_TXT;
+			queueOutputLine("ARK fájl tartalmának visszacsomagolása...");
+			int initialProgress = (int)InstallProgress.SWAP_FONT_2;
 			int targetProgress = (int)InstallProgress.ARK_IMPORT;
 
 			StringBuilder lineBuffer = new StringBuilder();
@@ -282,7 +365,7 @@ namespace SplitSecondMagyaritas {
 
 				newArkPath = $"{arkBackupPath}.NEW";
 				if (!File.Exists(newArkPath)) {
-					throw new Exception($"Az elvárt új ARK fájl ({newArkPath}) nem jöttlétre");
+					throw new Exception($"Az elvárt új ARK fájl ({newArkPath}) nem jött létre");
 				}
 
 				success = true;
@@ -333,7 +416,7 @@ namespace SplitSecondMagyaritas {
 
 		private void flushRollbacks(bool worker = false) {
 			if (rollbacks.Count > 0) {
-				queueOutputLine("Modosítások visszavonása...");
+				queueOutputLine("Módosítások visszavonása...");
 				rollbacks.ForEach(rollback => rollback.Invoke());
 				rollbacks.Clear();
 				if (!worker) {
@@ -383,8 +466,8 @@ namespace SplitSecondMagyaritas {
 			}
 		}
 
-		private bool cancelInstall(string actionDescr, Exception err) {
-			queueOutputLine($"{actionDescr}: {err.Message}\n{err.StackTrace}");
+		private bool cancelInstall(string actionDescription, Exception err) {
+			queueOutputLine($"{actionDescription}: {err.Message}\n{err.StackTrace}");
 			return cancelInstall();
 		}
 
@@ -476,7 +559,27 @@ namespace SplitSecondMagyaritas {
 				default:
 					return "a";
 			}
+		}
 
+		public bool sequenceContains(byte[] haystack, byte[] needle) {
+			var matchLength = 0;
+			var requiredMatchLength = needle.Length - 1;
+			for (int i = 0; i < haystack.Length; i++) {
+				if (matchLength < needle.Length && haystack[i] == needle[matchLength]) {
+					if (matchLength == requiredMatchLength) {
+						queueOutputLine($"Teljes egyezés (hossz: {matchLength}/{requiredMatchLength})");
+						return true;
+					}
+					else if (matchLength >= 5 && matchLength % 5 == 0) {
+						string matchText = Encoding.ASCII.GetString(haystack.Skip(i - matchLength).Take(matchLength).ToArray());
+						queueOutputLine($"Részleges egyezés: {matchText} (hossz: {matchLength}/{requiredMatchLength})");
+					}
+					matchLength++;
+					continue;
+				}
+				matchLength = 0;
+			}
+			return false;
 		}
 	}
 
@@ -485,9 +588,11 @@ namespace SplitSecondMagyaritas {
 		TEMP_FOLDER = 2,
 		ARK_BACKUP = 4,
 		ARK_EXPORT = 48,
-		FIND_EN_TXT = 50,
-		COPY_HU_TXT = 52,
-		ARK_IMPORT = 98,
+		FIND_EN_TXT = 49,
+		COPY_HU_TXT = 50,
+		SWAP_FONT_1 = 52,
+		SWAP_FONT_2 = 54,
+		ARK_IMPORT = 99,
 		NEW_ARK_RENAME = 100
 	}
 }

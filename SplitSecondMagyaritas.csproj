@@ -110,6 +110,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="res\fonts1.gfx" />
+    <EmbeddedResource Include="res\fonts2.gfx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="res\wall.jpg" />
