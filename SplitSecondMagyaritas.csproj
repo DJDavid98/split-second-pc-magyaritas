@@ -112,6 +112,7 @@
     </Compile>
     <EmbeddedResource Include="res\fonts1.gfx" />
     <EmbeddedResource Include="res\fonts2.gfx" />
+    <EmbeddedResource Include="res\fonts3.gfx" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="res\wall.jpg" />

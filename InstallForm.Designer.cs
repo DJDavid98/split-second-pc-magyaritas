@@ -30,16 +30,16 @@ namespace SplitSecondMagyaritas {
 			this.installWorker = new System.ComponentModel.BackgroundWorker();
 			this.installOutput = new System.Windows.Forms.RichTextBox();
 			this.SuspendLayout();
-			// 
+			//
 			// installProgress
-			// 
+			//
 			this.installProgress.Location = new System.Drawing.Point(12, 223);
 			this.installProgress.Name = "installProgress";
 			this.installProgress.Size = new System.Drawing.Size(409, 23);
 			this.installProgress.TabIndex = 0;
-			// 
+			//
 			// cancelButton
-			// 
+			//
 			this.cancelButton.BackColor = System.Drawing.Color.Transparent;
 			this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.cancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -51,19 +51,20 @@ namespace SplitSecondMagyaritas {
 			this.cancelButton.Text = "Megszakítás (Esc)";
 			this.cancelButton.UseVisualStyleBackColor = false;
 			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-			// 
+			//
 			// installWorker
-			// 
+			//
 			this.installWorker.WorkerReportsProgress = true;
 			this.installWorker.WorkerSupportsCancellation = true;
 			this.installWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.installWorker_DoWork);
 			this.installWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.updateProgress);
 			this.installWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.installWorker_RunWorkerCompleted);
-			// 
+			//
 			// installOutput
-			// 
+			//
 			this.installOutput.BackColor = System.Drawing.Color.Black;
 			this.installOutput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.installOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
 			this.installOutput.ForeColor = System.Drawing.Color.Gainsboro;
 			this.installOutput.Location = new System.Drawing.Point(13, 13);
 			this.installOutput.Name = "installOutput";
@@ -72,9 +73,9 @@ namespace SplitSecondMagyaritas {
 			this.installOutput.Size = new System.Drawing.Size(519, 200);
 			this.installOutput.TabIndex = 2;
 			this.installOutput.Text = "";
-			// 
+			//
 			// InstallForm
-			// 
+			//
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.Black;

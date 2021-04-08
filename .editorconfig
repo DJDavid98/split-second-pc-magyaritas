@@ -1,2 +1,5 @@
 [*.txt]
 trim_trailing_whitespace = false
+
+[*.csproj]
+insert_final_newline = false

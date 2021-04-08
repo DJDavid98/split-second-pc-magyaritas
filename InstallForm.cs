@@ -16,6 +16,7 @@ namespace SplitSecondMagyaritas {
 		private const string enFileStartsWith = "ADJUST MUSIC VOLUME";
 		private const string fontFile1Contains = "These are the symbolic font names we have defined for the game.";
 		private const string fontFile2Contains = "$HudFontA - EN";
+		private const string fontFile3Contains = "$CCSpills - EN";
 		private string arkPathUserSelection;
 		private string tempPathUserSelection;
 		private string extractorPathIn;
@@ -264,12 +265,14 @@ namespace SplitSecondMagyaritas {
 		}
 		private void swapFonts() {
 			queueOutputLine($"Betűtípus fájlok cseréje hosszú ő és ű betűket támogatóra...");
-			int[] foundProgressEquivalent = new int[] { (int)InstallProgress.COPY_HU_TXT, (int)InstallProgress.SWAP_FONT_1, (int)InstallProgress.SWAP_FONT_2 };
-			int targetProgress = (int)InstallProgress.SWAP_FONT_2;
+			int expectToFindFontFileCount = 3;
+			int[] foundProgressEquivalent = new int[] { (int)InstallProgress.COPY_HU_TXT, (int)InstallProgress.SWAP_FONT_1, (int)InstallProgress.SWAP_FONT_2, (int)InstallProgress.SWAP_FONT_3 };
+			int targetProgress = foundProgressEquivalent[expectToFindFontFileCount];
 
 			int found = 0;
 			bool file1Found = false;
 			bool file2Found = false;
+			bool file3Found = false;
 			try {
 				var files = new List<string>(Directory.GetFiles(tempFolder));
 				if (files.Count == 0) {
@@ -281,8 +284,9 @@ namespace SplitSecondMagyaritas {
 				var datFiles = files.FindAll(fileName => fileName.EndsWith(".dat"));
 				var fontFile1ContainsBytes = Encoding.ASCII.GetBytes(fontFile1Contains);
 				var fontFile2ContainsBytes = Encoding.ASCII.GetBytes(fontFile2Contains);
+				var fontFile3ContainsBytes = Encoding.ASCII.GetBytes(fontFile3Contains);
 				foreach (var datFileName in datFiles) {
-					if (found == 2) {
+					if (found == expectToFindFontFileCount) {
 						break;
 					}
 
@@ -296,49 +300,54 @@ namespace SplitSecondMagyaritas {
 
 					var fileContents = File.ReadAllBytes(datFileName);
 					var fontFileFound = false;
+					string whichFileWasFound = "valamelyik";
 					if (!file1Found && sequenceContains(fileContents, fontFile1ContainsBytes)) {
 						File.WriteAllBytes(datFileName, Properties.Resources.fonts1);
-						queueOutputLine($"Fájl {datFileName} felülírva az 1. betűtípus fájllal.");
+						whichFileWasFound = "az első";
 						file1Found = true;
 						fontFileFound = true;
 					}
 					else if (!file2Found && sequenceContains(fileContents, fontFile2ContainsBytes)) {
 						File.WriteAllBytes(datFileName, Properties.Resources.fonts2);
-						queueOutputLine($"Fájl {datFileName} felülírva az 2. betűtípus fájllal.");
+						whichFileWasFound = "a második";
 						file2Found = true;
+						fontFileFound = true;
+					}
+					else if (!file3Found && sequenceContains(fileContents, fontFile3ContainsBytes)) {
+						File.WriteAllBytes(datFileName, Properties.Resources.fonts2);
+						whichFileWasFound = "a harmadik";
+						file3Found = true;
 						fontFileFound = true;
 					}
 
 					if (fontFileFound) {
 						found++;
+						queueOutputLine($"Fájl {datFileName} felülírva {whichFileWasFound} betűtípus fájllal ({found}/{expectToFindFontFileCount})");
 					}
-
-					string newDatFileName = Regex.Replace(datFileName, @"\.dat$", ".gfx");
-					queueOutputLine($"GFX fájl kiterjesztés alkalmazása: {datFileName}");
-					File.Move(datFileName, newDatFileName);
-					queueOutputLine($"Fájl átnevezve, új név: {newDatFileName}");
 
 					var baseProgress = foundProgressEquivalent[found];
 					installWorker.ReportProgress(Convert.ToInt32(baseProgress + ((targetProgress - baseProgress) * (fileCounter / totalFileCount))));
 					fileCounter++;
 				}
 
-				if (found < 2) {
-					throw new Exception("Nem sikerült megtalálni a várt betűtípusokat.");
+				if (found < expectToFindFontFileCount) {
+					throw new Exception("Nem sikerült megtalálni az összes várt betűtípust.");
+				}
+
+				if (found > expectToFindFontFileCount) {
+					throw new Exception("A vártnál több betűtípus fájl került megtalálásra.");
 				}
 			} catch (Exception err) {
 				cancelInstall("Hiba a betűtípus fájlok keresése során", err);
 				return;
 			}
 
-			if (found == 2) {
-				installWorker.ReportProgress(foundProgressEquivalent[found]);
-				queueOutputLine("Betűtípus fájlok sikeresen lecserélve.");
-			}
+			installWorker.ReportProgress(foundProgressEquivalent[found]);
+			queueOutputLine("Betűtípus fájlok sikeresen lecserélve.");
 		}
 		private void importArkFile() {
 			queueOutputLine("ARK fájl tartalmának visszacsomagolása...");
-			int initialProgress = (int)InstallProgress.SWAP_FONT_2;
+			int initialProgress = (int)InstallProgress.SWAP_FONT_3;
 			int targetProgress = (int)InstallProgress.ARK_IMPORT;
 
 			StringBuilder lineBuffer = new StringBuilder();
@@ -349,12 +358,12 @@ namespace SplitSecondMagyaritas {
 				string processFileName = extractorPathIn;
 				string processArguments = String.Join(" ", new string[] { "-i", $"\"{arkBackupPath}\"", $"\"{tempFolder}\"" });
 
-				Process extractProcess = runProcessWithProgress(processFileName, processArguments, lineBuffer, initialProgress, targetProgress);
+				Process importProcess = runProcessWithProgress(processFileName, processArguments, lineBuffer, initialProgress, targetProgress);
 
-				extractProcess.WaitForExit();
+				importProcess.WaitForExit();
 
-				if (extractProcess.ExitCode != 0) {
-					throw new Exception($"A visszacsomagoló program visszatérési értéke ({extractProcess.ExitCode}) hibát jelöl");
+				if (importProcess.ExitCode != 0) {
+					throw new Exception($"A visszacsomagoló program visszatérési értéke ({importProcess.ExitCode}) hibát jelöl");
 				}
 
 				newArkPath = $"{arkBackupPath}.NEW";
@@ -499,7 +508,7 @@ namespace SplitSecondMagyaritas {
 		}
 
 		private Process runProcessWithProgress(string processFileName, string processArguments, StringBuilder lineBuffer, int initialProgress, int targetProgress) {
-			queueOutputLine($"Külső parancs futtatása: {processFileName} {processArguments}");
+			queueOutputLine($"Külső parancs futtatása: {processFileName} {processArguments}\n");
 			Process externalProcess = new Process();
 			externalProcess.StartInfo.FileName = processFileName;
 			externalProcess.StartInfo.Arguments = processArguments;
@@ -586,6 +595,7 @@ namespace SplitSecondMagyaritas {
 		COPY_HU_TXT = 50,
 		SWAP_FONT_1 = 52,
 		SWAP_FONT_2 = 54,
+		SWAP_FONT_3 = 56,
 		ARK_IMPORT = 99,
 		NEW_ARK_RENAME = 100
 	}
