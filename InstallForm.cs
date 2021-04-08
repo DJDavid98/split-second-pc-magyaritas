@@ -322,7 +322,7 @@ namespace SplitSecondMagyaritas {
 
 					if (fontFileFound) {
 						found++;
-						queueOutputLine($"Fájl {datFileName} felülírva {whichFileWasFound} betűtípus fájllal ({found}/{expectToFindFontFileCount})");
+						queueOutputLine($"Fájl felülírva {whichFileWasFound} betűtípus fájllal ({found}/{expectToFindFontFileCount})");
 					}
 
 					var baseProgress = foundProgressEquivalent[found];
@@ -570,13 +570,14 @@ namespace SplitSecondMagyaritas {
 			for (int i = 0; i < haystack.Length; i++) {
 				if (matchLength < needle.Length && haystack[i] == needle[matchLength]) {
 					if (matchLength == requiredMatchLength) {
-						queueOutputLine($"Teljes egyezés (hossz: {matchLength}/{requiredMatchLength})");
+						queueOutputLine($"Teli találat: {Encoding.ASCII.GetString(needle)}");
 						return true;
 					}
-					else if (matchLength >= 5 && matchLength % 5 == 0) {
+					// Debugging code intended to check match progress
+					/* else if (matchLength >= 5 && matchLength % 5 == 0) {
 						string matchText = Encoding.ASCII.GetString(haystack.Skip(i - matchLength).Take(matchLength).ToArray());
 						queueOutputLine($"Részleges egyezés: {matchText} (hossz: {matchLength}/{requiredMatchLength})");
-					}
+					} */
 					matchLength++;
 					continue;
 				}
