@@ -637,7 +637,7 @@ KERÜLD KI A HULLÁMOKBAN KILŐTT RAKÉTÁKAT
 REJTETT
 Jobb Y Tengely +
 A felhasználó neved nem tartalmazhat személyes információt, pl. a kereszt- vagy vezetékneved, e-mail címed vagy lakhelyed.
-NEM.
+SZÁM
 EZ A VERSENY
 RANGIDŐS MENEDZSER, KÖZKAPCSOLATOK
 HASZNÁLJ TÁMADÁSOKAT AZ ELLENFELEIDEN HOGY ELKERÜLT AZ UTOLSÓ HELYET.
@@ -994,7 +994,7 @@ WebVissza
 WebKedvencek
 VÉSZHELYZET
 KERÜLD A(Z) %s HELYET!
-NEM.
+SZÁM
 BEÁLLÍTÁSOK
 EPIZÓD VÁLASZTÁSA
 VÉGEZZ 1. HELYEN, HOGY TOVÁBBJUSS AZ ELIT VERSENYRE

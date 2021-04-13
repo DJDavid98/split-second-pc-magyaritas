@@ -5,7 +5,7 @@
 
 Ha Windows-on keresztül megfelelően telepítve van a játék, akkor automatikusan megpróbálja megkeresni magának a szükséges `resident.ark` fájlt tallózás nélkül, de a magyarítás telepítése előtt van lehetőség tetszőleges fájlt és ideiglenes mappát megadni (ha pl. nincs a kibontáshoz elég szabad hely a `C:` meghajtódon).
 
-Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huLangFile.txt](res/huLangFile.txt) útvonalon. Ebben a fájlban ez ékezetes Ő és Ű betűk közvetlen szerepelnek, de mivel a játék 2 betűtípúsából csak az egyik támogajta ezen karakterek kis- és nagybetűs verzióit ezért a telepítő a folyamat során ezeket Ô és Û betűkre cseréli.
+Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huLangFile.txt](res/huLangFile.txt) útvonalon. Ebben a fájlban ez ékezetes Ő és Ű betűk közvetlen szerepelnek, de mivel a játék 2 betűtípusából csak az egyik támogatja ezen karakterek kis- és nagybetűs verzióit ezért a telepítő a folyamat során ezeket Ô és Û betűkre cseréli.
 
 ## Használati útmutató
 
@@ -14,7 +14,7 @@ Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huL
  3. [7-Zip] segítségével csomagold ki az előbb letöltött állományból a `Split_Second_ARK_Tool.exe`-t **közvetlen a `SplitSecondMagyaritas.exe` fájl mellé**
  4. Indítsd el a telepítőt és kövesd a képernyőn megjelenő utasításokat
  
-    - Ha a Windows SmartScreen nyavajog, hogy ismeretlen kiadótól származik a program, az ablakban a “További információ” linkre kattintva megjelenik egy gomb amivel már tudod futtatni.
+    - Ha a Windows SmartScreen nyavalyog, hogy ismeretlen kiadótól származik a program, az ablakban a “További információ” linkre kattintva megjelenik egy gomb amivel már tudod futtatni.
 
 ## Külön köszönet
 
@@ -22,7 +22,7 @@ Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huL
 
 ## Nem működik / hibát találtam
 
-Bármilyen észrevétellel a [weboldalamon] található eléhetőségeim egyikén kereshetsz.
+Bármilyen észrevétellel a [weboldalamon] található elehetőségeim egyikén kereshetsz.
 
  [SplitSecondMagyaritas.exe]: https://bitbucket.org/DJDavid98/split-second-magyaritas/downloads/SplitSecondMagyaritas.exe
  [7-Zip]: https://www.7-zip.org/
