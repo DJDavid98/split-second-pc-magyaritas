@@ -9,7 +9,7 @@ Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huL
 
 ## Használati útmutató
 
- 1. Töltsd le a [SplitSecondMagyaritas.exe] fájlt egy tetszőleges mappába
+ 1. Töltsd le a SplitSecondMagyaritas.exe fájlt a [Kiadások] oldalról egy tetszőleges mappába
  2. Szerezd be a `Split_Second_ARK_Tool_By_Delutto.7z`-t innen: https://zenhax.com/viewtopic.php?t=589
  3. [7-Zip] segítségével csomagold ki az előbb letöltött állományból a `Split_Second_ARK_Tool.exe`-t **közvetlen a `SplitSecondMagyaritas.exe` fájl mellé**
  4. Indítsd el a telepítőt és kövesd a képernyőn megjelenő utasításokat
@@ -24,7 +24,7 @@ Ebben a repository-ban található meg a konkrét fordítás fájl is a [res/huL
 
 Bármilyen észrevétellel a [weboldalamon] található elehetőségeim egyikén kereshetsz.
 
- [SplitSecondMagyaritas.exe]: https://bitbucket.org/DJDavid98/split-second-magyaritas/downloads/SplitSecondMagyaritas.exe
+ [Kiadások]: https://github.com/DJDavid98/split-second-pc-magyaritas/releases
  [7-Zip]: https://www.7-zip.org/
  [weboldalamon]: https://djdavid98.art
  [ps-hack.hu]: http://ps-hack.hu
